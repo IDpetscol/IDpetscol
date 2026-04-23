@@ -6,7 +6,7 @@ const GOOGLE_SAVE_BASE_URL = "https://pay.google.com/gp/v/save/";
 export async function buildGoogleWalletLink(petCard) {
   const issuerId = process.env.GOOGLE_WALLET_ISSUER_ID;
   const serviceAccountEmail = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
-  const privateKey = process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY;
+  const privateKey = normalizePrivateKey(process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY);
 
   if (!issuerId || !serviceAccountEmail || !privateKey) {
     return unavailable(
@@ -147,4 +147,12 @@ function unavailable(reason) {
     available: false,
     reason
   };
+}
+
+function normalizePrivateKey(value) {
+  if (!value) {
+    return value;
+  }
+
+  return value.replace(/\\n/g, "\n").trim();
 }

@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pet Wallet Card</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <div class="bg-orb bg-orb-a"></div>
+    <div class="bg-orb bg-orb-b"></div>
+    <main class="shell">
+      <section class="hero">
+        <p class="eyebrow">Apple Wallet + Google Wallet</p>
+        <h1>Convierte la ficha de una mascota en una tarjeta lista para el celular.</h1>
+        <p class="lead">
+          Sube la foto del perrito, agrega los datos de la mascota y genera una tarjeta tipo
+          propiedad para guardar en Android o iPhone.
+        </p>
+      </section>
+
+      <section class="layout">
+        <form id="pet-form" class="panel form-panel">
+          <div class="panel-head">
+            <h2>Datos de la tarjeta</h2>
+            <span class="badge">Starter funcional</span>
+          </div>
+
+          <label>
+            <span>Nombre del propietario</span>
+            <input name="ownerName" placeholder="Ej: Laura Martinez" required>
+          </label>
+
+          <label>
+            <span>Nombre de la mascota</span>
+            <input name="petName" placeholder="Ej: Bruno" required>
+          </label>
+
+          <div class="grid-two">
+            <label>
+              <span>Especie</span>
+              <input name="species" placeholder="Perro, gato..." required>
+            </label>
+
+            <label>
+              <span>Raza</span>
+              <input name="breed" placeholder="Ej: Golden Retriever">
+            </label>
+          </div>
+
+          <div class="grid-two">
+            <label>
+              <span>ID del microchip</span>
+              <input name="chipId" placeholder="Ej: 985121010203040">
+            </label>
+
+            <label>
+              <span>Fecha de nacimiento</span>
+              <input name="birthDate" type="date">
+            </label>
+          </div>
+
+          <label>
+            <span>Telefono de contacto</span>
+            <input name="emergencyPhone" placeholder="Ej: +57 300 123 4567">
+          </label>
+
+          <label>
+            <span>Notas</span>
+            <textarea name="notes" rows="3" placeholder="Vacunas, alergias, observaciones..."></textarea>
+          </label>
+
+          <label class="file-field">
+            <span>Foto de la mascota</span>
+            <input id="photo-input" type="file" accept="image/png,image/jpeg" required>
+            <small>La foto se convierte a PNG para reutilizarla en Apple Wallet.</small>
+          </label>
+
+          <button class="primary-button" type="submit">Generar tarjeta</button>
+          <p id="status" class="status" aria-live="polite"></p>
+        </form>
+
+        <section class="panel preview-panel">
+          <div class="panel-head">
+            <h2>Preview</h2>
+            <span class="badge badge-soft">Diseno de la tarjeta</span>
+          </div>
+
+          <article class="pet-card" id="card-preview">
+            <div class="pet-card-top">
+              <div>
+                <p class="mini-label">Tarjeta de propiedad</p>
+                <h3 id="preview-pet-name">Tu mascota</h3>
+              </div>
+              <p class="microchip" id="preview-chip">Sin microchip</p>
+            </div>
+
+            <div class="pet-card-body">
+              <div class="pet-card-photo-wrap">
+                <img id="preview-photo" alt="Preview de la mascota">
+              </div>
+
+              <div class="pet-card-data">
+                <p><span>Propietario</span><strong id="preview-owner">Pendiente</strong></p>
+                <p><span>Especie</span><strong id="preview-species">Pendiente</strong></p>
+                <p><span>Raza</span><strong id="preview-breed">Pendiente</strong></p>
+              </div>
+            </div>
+
+            <div class="pet-card-notes">
+              <span>Notas</span>
+              <p id="preview-notes">Sin notas por ahora.</p>
+            </div>
+          </article>
+
+          <div id="result" class="result hidden">
+            <div class="result-links">
+              <a id="google-link" class="wallet-link hidden" target="_blank" rel="noreferrer">Agregar a Google Wallet</a>
+              <a id="apple-link" class="wallet-link hidden" target="_blank" rel="noreferrer">Agregar a Apple Wallet</a>
+            </div>
+            <ul id="notes" class="notes"></ul>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "name": "pet-wallet-card",
+  "version": "0.1.0",
+  "description": "Starter para emitir una tarjeta de mascota en Apple Wallet y Google Wallet.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
